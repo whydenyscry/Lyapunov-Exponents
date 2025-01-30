@@ -44,7 +44,7 @@ $$\dot{\boldsymbol{\updelta}}\left(t\right) = \mathbf{J}\_\mathbf{f}\left(\mathb
 	
 where $\mathbf{J}_\mathbf{f} \in \mathbb{R}^{m\times m}$ is Jacobian of the function $\mathbf{f}\left(\mathbf{z}\right)$ and $\boldsymbol{\updelta} \in \mathbb{R}^{m\times m}$ is variational matrix:
 	
-$$\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) = \frac{\operatorname{d}\mathbf{f}}{\operatorname{d}\mathbf{z}} = \begin{bmatrix}
+$$\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) = \frac{\text{d}\mathbf{f}}{\text{d}\mathbf{z}} = \begin{bmatrix}
 			\boldsymbol{\nabla}^\text{T} f_1 
 			\\
 			\vdots
