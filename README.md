@@ -66,7 +66,7 @@ $$\boldsymbol{\updelta}\left(t\right) =
 		
 To find out what happens to the variations, you need to solve the variational equation and the system equation simultaneously. To do this, you work with a new augmented state vector of length $m + m^2$:
 
-$$\mathbf{z}_\ast = \begin{bmatrix}
+$$\mathbf{z}\_\ast = \begin{bmatrix}
 			\mathbf{z}\\
 			\boldsymbol{\updelta}_{z_1}\\
 			\vdots\\
@@ -75,7 +75,7 @@ $$\mathbf{z}_\ast = \begin{bmatrix}
 		
 where $\forall m$
 
-$$\boldsymbol{\updelta}_{z_m} = \begin{bmatrix}
+$$\boldsymbol{\updelta}\_{z_m} = \begin{bmatrix}
 			\delta_{z_m z_1}\\
 			\vdots\\
 			\delta_{z_m z_m}
