@@ -40,7 +40,7 @@ where $\mathbf{z} \in \mathbb{R}^m, ~\mathbf{f}:\mathbb{R}^m \to \mathbb{R}^m$.
 
 For this system the variational equation has the following form:
 
-$$\dot{\bm{\updelta}}\left(t\right) = \mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) \bm{\updelta}\left(t\right), \quad \left.\bm{\updelta}\left(t\right)\right|_{t=t_0} = \mathbf{I},$$
+$$\dot{\bm{\updelta}}\left(t\right) = \mathbf{J}\_\mathbf{f}\left(\mathbf{z}\right) \bm{\updelta}\left(t\right), \quad \left.\bm{\updelta}\left(t\right)\right|\_{t=t_0} = \mathbf{I},$$
 	
 where $\mathbf{J}_\mathbf{f} \in \mathbb{R}^{m\times m}$ is Jacobian of the function $\mathbf{f}\left(\mathbf{z}\right)$ and $\bm{\updelta} \in \mathbb{R}^{m\times m}$ is variational matrix:
 	
