@@ -68,9 +68,9 @@ To find out what happens to the variations, you need to solve the variational eq
 
 $$\mathbf{z}\_\ast = \begin{bmatrix}
 			\mathbf{z}\\
-			\boldsymbol{\updelta}_{z_1}\\
+			\boldsymbol{\updelta}\_{z\_1}\\
 			\vdots\\
-			\boldsymbol{\updelta}_{z_m}
+			\boldsymbol{\updelta}\_{z\_m}
 		\end{bmatrix},$$
 		
 where $\forall m$
