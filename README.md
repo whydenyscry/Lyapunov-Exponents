@@ -40,16 +40,16 @@ where $\mathbf{z} \in \mathbb{R}^m, ~\mathbf{f}:\mathbb{R}^m \to \mathbb{R}^m$.
 
 For this system the variational equation has the following form:
 
-$$\dot{\bm{\updelta}}\left(t\right) = \mathbf{J}\_\mathbf{f}\left(\mathbf{z}\right) \bm{\updelta}\left(t\right), \quad \left.\bm{\updelta}\left(t\right)\right|\_{t=t_0} = \mathbf{I},$$
+$$\dot{\boldsymbol{\updelta}}\left(t\right) = \mathbf{J}\_\mathbf{f}\left(\mathbf{z}\right) \boldsymbol{\updelta}\left(t\right), \quad \left.\boldsymbol{\updelta}\left(t\right)\right|\_{t=t_0} = \mathbf{I},$$
 	
-where $\mathbf{J}_\mathbf{f} \in \mathbb{R}^{m\times m}$ is Jacobian of the function $\mathbf{f}\left(\mathbf{z}\right)$ and $\bm{\updelta} \in \mathbb{R}^{m\times m}$ is variational matrix:
+where $\mathbf{J}_\mathbf{f} \in \mathbb{R}^{m\times m}$ is Jacobian of the function $\mathbf{f}\left(\mathbf{z}\right)$ and $\boldsymbol{\updelta} \in \mathbb{R}^{m\times m}$ is variational matrix:
 	
 $$\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) = \frac{\operatorname{d}\mathbf{f}}{\operatorname{d}\mathbf{z}} = \begin{bmatrix}
-			\bm{\nabla}^\text{T} f_1 
+			\boldsymbol{\nabla}^\text{T} f_1 
 			\\
 			\vdots
 			\\
-			\bm{\nabla}^\text{T} f_m
+			\boldsymbol{\nabla}^\text{T} f_m
 		\end{bmatrix}=
 		\begin{bmatrix}
 			\dfrac{\partial f_1}{\partial z_1} &\cdots& \dfrac{\partial f_1}{\partial z_m}\\
@@ -57,7 +57,7 @@ $$\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) = \frac{\operatorname{d}\mathbf{f
 			\dfrac{\partial f_m}{\partial z_1} &\cdots& \dfrac{\partial f_m}{\partial z_m} 
 		\end{bmatrix},$$	
 
-$$\bm{\updelta}\left(t\right) = 
+$$\boldsymbol{\updelta}\left(t\right) = 
 		\begin{bmatrix}
 			\delta_{z_1 z_1}\left(t\right)&\cdots& \delta_{z_m z_1}\left(t\right)\\
 			\vdots & \ddots & \vdots \\
@@ -68,14 +68,14 @@ To find out what happens to the variations, you need to solve the variational eq
 
 $$\mathbf{z}_\ast = \begin{bmatrix}
 			\mathbf{z}\\
-			\bm{\updelta}_{z_1}\\
+			\boldsymbol{\updelta}_{z_1}\\
 			\vdots\\
-			\bm{\updelta}_{z_m}
+			\boldsymbol{\updelta}_{z_m}
 		\end{bmatrix},$$
 		
 where $\forall m$
 
-$$\bm{\updelta}_{z_m} = \begin{bmatrix}
+$$\boldsymbol{\updelta}_{z_m} = \begin{bmatrix}
 			\delta_{z_m z_1}\\
 			\vdots\\
 			\delta_{z_m z_m}
