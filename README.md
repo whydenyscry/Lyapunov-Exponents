@@ -82,4 +82,4 @@ $$\boldsymbol{\updelta}\_{z_m} = \begin{bmatrix}
 			\delta_{z_m z_m}
 		\end{bmatrix}.$$
 		
-The augmented IVP is solved using [General Algorithm for the Explicit Runge—Kutta Method] (https://github.com/whydenyscry/General-algorithm-of-the-explicit-Runge-Kutta-method).
+The augmented IVP is solved using [General Algorithm for the Explicit Runge—Kutta Method](https://github.com/whydenyscry/General-algorithm-of-the-explicit-Runge-Kutta-method).
