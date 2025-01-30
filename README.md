@@ -34,7 +34,7 @@ $$\mathbf{y} = \begin{bmatrix}
 ## The Variational Equation
 
 Consider an autonomous IVP 
-$$		\dot{\mathbf{z}}\left(t\right) = \mathbf{f}\left(\mathbf{z}\right), \quad \left.\mathbf{z}\left(t\right)\right|_{t=t_0}=\mathbf{z}_0, $$
+$$		\dot{\mathbf{z}}\left(t\right) = \mathbf{f}\left(\mathbf{z}\right), \quad \left.\mathbf{z}\left(t\right)\right|\_{t=t\_0}=\mathbf{z}\_0, $$
 
 where $\mathbf{z} \in \mathbb{R}^m, ~\mathbf{f}:\mathbb{R}^m \to \mathbb{R}^m$.
 
