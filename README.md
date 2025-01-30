@@ -3,6 +3,7 @@ MATLAB script for solving augmented IVP with variational equation, calculating L
 
 ## Table of Contents
 - [Notes on Nonautonomous Systems](#notes-on-nonautonomous-systems)
+- [The Variational Equation](#the-variational-equation)
 
 ## Notes on Nonautonomous Systems
 Consider a nonautonomous IVP 
@@ -28,4 +29,54 @@ $$\mathbf{y} = \begin{bmatrix}
 		\end{bmatrix}, \quad \mathbf{y}_0 = \begin{bmatrix}
 		\mathbf{z}_0\\
 		t_0
-		\end{bmatrix}$$
+		\end{bmatrix}.$$
+		
+## The Variational Equation
+
+Consider an autonomous IVP 
+$$		\dot{\mathbf{z}}\left(t\right) = \mathbf{f}\left(\mathbf{z}\right), \quad \left.\mathbf{z}\left(t\right)\right|_{t=t_0}=\mathbf{z}_0, $$
+
+where $\mathbf{z} \in \mathbb{R}^m, ~\mathbf{f}:\mathbb{R}^m \to \mathbb{R}^m$.
+
+For this system the variational equation has the following form:
+
+$$\dot{\bm{\updelta}}\left(t\right) = \mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) \bm{\updelta}\left(t\right), \quad \left.\bm{\updelta}\left(t\right)\right|_{t=t_0} = \mathbf{I},$$
+	
+where $\mathbf{J}_\mathbf{f} \in \mathbb{R}^{m\times m}$ is Jacobian of the function $\mathbf{f}\left(\mathbf{z}\right)$ and $\bm{\updelta} \in \mathbb{R}^{m\times m}$ is variational matrix:
+	
+$$\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) = \frac{\operatorname{d}\mathbf{f}}{\operatorname{d}\mathbf{z}} = \begin{bmatrix}
+			\bm{\nabla}^\text{T} f_1 
+			\\
+			\vdots
+			\\
+			\bm{\nabla}^\text{T} f_m
+		\end{bmatrix}=
+		\begin{bmatrix}
+			\dfrac{\partial f_1}{\partial z_1} &\cdots& \dfrac{\partial f_1}{\partial z_m}\\
+			\vdots & \ddots & \vdots \\
+			\dfrac{\partial f_m}{\partial z_1} &\cdots& \dfrac{\partial f_m}{\partial z_m} 
+		\end{bmatrix},$$	
+
+$$\bm{\updelta}\left(t\right) = 
+		\begin{bmatrix}
+			\delta_{z_1 z_1}\left(t\right)&\cdots& \delta_{z_m z_1}\left(t\right)\\
+			\vdots & \ddots & \vdots \\
+			\delta_{z_1 z_m}\left(t\right) &\cdots& \delta_{z_m z_m}\left(t\right)
+		\end{bmatrix}.$$
+		
+To find out what happens to the variations, you need to solve the variational equation and the system equation simultaneously. To do this, you work with a new augmented state vector of length $m + m^2$:
+
+$$\mathbf{z}_\ast = \begin{bmatrix}
+			\mathbf{z}\\
+			\bm{\updelta}_{z_1}\\
+			\vdots\\
+			\bm{\updelta}_{z_m}
+		\end{bmatrix},$$
+		
+where $\forall m$
+
+$$\bm{\updelta}_{z_m} = \begin{bmatrix}
+			\delta_{z_m z_1}\\
+			\vdots\\
+			\delta_{z_m z_m}
+		\end{bmatrix}.$$
