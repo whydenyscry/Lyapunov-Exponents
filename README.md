@@ -126,7 +126,7 @@ $$
 
 ## Example
 
-The Rössler Attractor in the [ExampleOfUse.mlx](ExampleOfUse/ExampleOfUse.pdf) was chosen as an example.
+The Rössler Attractor in the [ExampleOfUse.mlx](ExampleOfUse/ExampleOfUse.pdf) was chosen as an example:
  
 $$ 
 \begin{cases}
