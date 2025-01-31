@@ -93,6 +93,9 @@ To test the algorithm, an example from [here](https://home.cs.colorado.edu/~lizb
 
 The calculation of the Lyapunov exponent was based on the QR decomposition method, the application of which can be viewed via the script [odeExplicitGeneralLE.m](Scripts/odeExplicitGeneralLE.m).
 
+### Syntax
+`[t, xsol, lyap_exp] = odeExplicitGeneralLE(c_vector, A_matrix, b_vector, ode_fun, jacobian_fun, tspan, tau, incond)`
+
 ### Input Arguments
 - `c_vector`: vector of coefficients $\mathbf{c}$ of Butcher tableau for the selected method;
 - `A_matrix`: matrix of coefficients $\mathbf{A}$ of Butcher tableau for the selected method;
