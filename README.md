@@ -5,7 +5,7 @@ MATLAB script for solving augmented IVP with variational equation, calculating L
 - [Notes on Nonautonomous Systems](#notes-on-nonautonomous-systems)
 - [The Variational Equation](#the-variational-equation)
 - [The Lyapunov Exponents](#the-lyapunov-exponents)
-- [The Kaplan—Yorke Dimension](#the-kaplan-yorke-dimension)
+- [The Kaplan—Yorke Dimension](#the-kaplanyorke-dimension)
 - [Example](#example)
 
 ## Notes on Nonautonomous Systems
