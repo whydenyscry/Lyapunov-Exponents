@@ -4,6 +4,9 @@ MATLAB script for solving augmented IVP with variational equation, calculating L
 ## Table of Contents
 - [Notes on Nonautonomous Systems](#notes-on-nonautonomous-systems)
 - [The Variational Equation](#the-variational-equation)
+- [The Lyapunov Exponents](#the-lyapunov-exponents)
+- [The Kaplan—Yorke Dimension](#the-kaplan-yorke-dimension)
+- [Example](#example)
 
 ## Notes on Nonautonomous Systems
 Consider a nonautonomous IVP 
@@ -82,4 +85,75 @@ $$\boldsymbol{\delta}\_{z_m} = \begin{bmatrix}
 			\delta_{z_m z_m}
 		\end{bmatrix}.$$
 		
-The augmented IVP is solved using [General Algorithm for the Explicit Runge—Kutta Method](https://github.com/whydenyscry/General-algorithm-of-the-explicit-Runge-Kutta-method).
+The augmented IVP is solved using [General Algorithm for the Explicit Runge—Kutta Method](https://github.com/whydenyscry/General-algorithm-of-the-explicit-Runge-Kutta-method). 
+
+To test the algorithm, an example from [here](https://home.cs.colorado.edu/~lizb/chaos/variational-notes.pdf) was used. The results can be seen in the [ExampleOfUse.mlx](ExampleOfUse/ExampleOfUse.pdf) file.
+
+## The Lyapunov Exponents
+
+The calculation of the Lyapunov exponent was based on the QR decomposition method, the application of which can be viewed via the script [odeExplicitGeneralLE.m](Scripts/odeExplicitGeneralLE.m).
+
+### Input Arguments
+- `c_vector`: vector of coefficients $\mathbf{c}$ of Butcher tableau for the selected method;
+- `A_matrix`: matrix of coefficients $\mathbf{A}$ of Butcher tableau for the selected method;
+- `b_vector`: vector of coefficients $\mathbf{b}$ of Butcher tableau for the selected method;
+- `ode_fun`: function handle that defines the system of ODEs to be integrated;
+- `jacobian_fun`: function handle that computes the Jacobian matrix of the system;
+- `tspan`: interval of integration, specified as a two-element vector;
+- `tau`: time discretization step;
+- `incond`: vector of initial conditions.
+
+### Output Arguments
+- `t`: vector of evaluation points used to perform the integration;
+- `xsol`: matrix in which each row corresponds to a solution at the value returned in the corresponding row of `t`.
+- `lyap_exp`: matrix of Lyapunov exponents in which each row corresponds to a Lyapunov exponent at the value returned in the corresponding row of `t`.
+
+## The Kaplan—Yorke Dimension
+
+Let the Lyapunov exponents be sorted in descending order $\lambda \_{1}\geq \lambda \_{2}\geq \dots \geq \lambda \_{m}$, then
+
+$$
+D_\text{KY}=k+{\frac {\sum \_{i=1}^{k}\lambda\_{i}}{|\lambda\_{k+1}|}},
+$$
+
+where for $k$
+$$
+\sum \_{i=1}^{k}\lambda \_{i}\geqslant 0, \quad \sum \_{i=1}^{k + 1}\lambda \_{i}<0.
+$$
+
+## Example
+
+The Rössler Attractor in the [ExampleOfUse.mlx](ExampleOfUse/ExampleOfUse.pdf) was chosen as an example.
+ 
+$$ 
+\begin{cases}
+			\frac{\mathrm{d}x}{\mathrm{d}t} =-y-z,\\
+			\frac{\mathrm{d}y}{\mathrm{d}t} = x+\alpha y, \\
+			\frac{\mathrm{d}z}{\mathrm{d}t} = \beta+z\left(x-\varsigma\right),
+		\end{cases}
+$$
+
+$$ 
+\begin{bmatrix}
+			\alpha\\
+			\beta\\
+			\varsigma
+		\end{bmatrix}=\begin{bmatrix}
+		0.2\\
+		0.2\\
+		5.7
+		\end{bmatrix}.
+$$
+
+
+<p align="center">
+  <img src="ExampleOfUse/images/The_Rossler_Attractor.png"/>
+</p>
+
+<p align="center">
+  <img src="ExampleOfUse/images/time_series.png"/>
+</p>
+
+<p align="center">
+  <img src="ExampleOfUse/images/LEs_plot.png"/>
+</p>
