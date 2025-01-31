@@ -121,7 +121,7 @@ $$
 
 where for $k$
 $$
-\sum \_{i=1}^{k}\lambda \_{i}\geqslant 0, \quad \sum \_{i=1}^{k + 1}\lambda \_{i}<0.
+\sum \_{i=1}^{k}\lambda \_{i}\geq 0, \quad \sum \_{i=1}^{k + 1}\lambda \_{i}<0.
 $$
 
 ## Example
