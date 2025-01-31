@@ -41,9 +41,9 @@ where $\mathbf{z} \in \mathbb{R}^m, ~\mathbf{f}:\mathbb{R}^m \to \mathbb{R}^m$.
 
 For this system the variational equation has the following form:
 
-$$\dot{\boldsymbol{\updelta}}\left(t\right) = \mathbf{J}\_\mathbf{f}\left(\mathbf{z}\right) \boldsymbol{\updelta}\left(t\right), \quad \left.\boldsymbol{\updelta}\left(t\right)\right|\_{t=t_0} = \mathbf{I},$$
+$$\dot{\boldsymbol{\delta}}\left(t\right) = \mathbf{J}\_\mathbf{f}\left(\mathbf{z}\right) \boldsymbol{\delta}\left(t\right), \quad \left.\boldsymbol{\delta}\left(t\right)\right|\_{t=t_0} = \mathbf{I},$$
 	
-where $\mathbf{J}_\mathbf{f} \in \mathbb{R}^{m\times m}$ is Jacobian of the function $\mathbf{f}\left(\mathbf{z}\right)$ and $\boldsymbol{\updelta} \in \mathbb{R}^{m\times m}$ is variational matrix:
+where $\mathbf{J}_\mathbf{f} \in \mathbb{R}^{m\times m}$ is Jacobian of the function $\mathbf{f}\left(\mathbf{z}\right)$ and $\boldsymbol{\delta} \in \mathbb{R}^{m\times m}$ is variational matrix:
 	
 $$\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) = \frac{\text{d}\mathbf{f}}{\text{d}\mathbf{z}} = \begin{bmatrix}
 			\boldsymbol{\nabla}^\text{T} f_1 
@@ -58,7 +58,7 @@ $$\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) = \frac{\text{d}\mathbf{f}}{\text
 			\dfrac{\partial f_m}{\partial z_1} &\cdots& \dfrac{\partial f_m}{\partial z_m} 
 		\end{bmatrix},$$	
 
-$$\boldsymbol{\updelta}\left(t\right) = 
+$$\boldsymbol{\delta}\left(t\right) = 
 		\begin{bmatrix}
 			\delta_{z_1 z_1}\left(t\right)&\cdots& \delta_{z_m z_1}\left(t\right)\\
 			\vdots & \ddots & \vdots \\
@@ -69,14 +69,14 @@ To find out what happens to the variations, you need to solve the variational eq
 
 $$\mathbf{z}\_\ast = \begin{bmatrix}
 			\mathbf{z}\\
-			\boldsymbol{\updelta}\_{z\_1}\\
+			\boldsymbol{\delta}\_{z\_1}\\
 			\vdots\\
-			\boldsymbol{\updelta}\_{z\_m}
+			\boldsymbol{\delta}\_{z\_m}
 		\end{bmatrix},$$
 		
 where $\forall m$
 
-$$\boldsymbol{\updelta}\_{z_m} = \begin{bmatrix}
+$$\boldsymbol{\delta}\_{z_m} = \begin{bmatrix}
 			\delta_{z_m z_1}\\
 			\vdots\\
 			\delta_{z_m z_m}
