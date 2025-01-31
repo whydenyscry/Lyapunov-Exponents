@@ -54,6 +54,6 @@ else
     end
 end
 
-xsol = xsol .';
+xsol = xsol(1 : m, :) .';
 lyap_exp = lyap_exp .';
 end
