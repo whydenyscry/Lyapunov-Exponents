@@ -40,12 +40,10 @@ Consider an autonomous IVP
 \dot{\mathbf{z}}\left(t\right) = \mathbf{f}\left(\mathbf{z}\right), \quad \left.\mathbf{z}\left(t\right)\right|_{t=t_0}=\mathbf{z}_0, 
 ```
 where $`\mathbf{z}\left(t\right):\mathbb{R} \mapsto \mathbb{R}^m, ~\mathbf{f}\left(\mathbf{z}\right): \mathbb{R}^m \to \mathbb{R}^m`$.
-
 For this system the variational equation has the following form:
 ```math
 \dot{\boldsymbol{\Phi}}\left(t\right) = \mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) \boldsymbol{\Phi}\left(t\right), \quad \left.\boldsymbol{\Phi}\left(t\right)\right|_{t=t_0} = \mathbf{I}
 ```
-	
 where $`\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right): \mathbb{R} \mapsto \mathbb{R}^{m\times m}`$ is Jacobian of the function $`\mathbf{f}\left(\mathbf{z}\right)`$ 
 ```math
 \mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) = \frac{\text{d}\mathbf{f}}{\text{d}\mathbf{z}} = \begin{bmatrix}
@@ -61,11 +59,13 @@ where $`\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right): \mathbb{R} \mapsto \mathbb
 			\dfrac{\partial f_m}{\partial z_1} &\cdots& \dfrac{\partial f_m}{\partial z_m} 
 		\end{bmatrix},
 ```
-and $`\boldsymbol{\Phi}\left(t\right): \mathbb{R} \mapsto \mathbb{R}^{m\times m}`$ is variational matrix. To find out what happens to the variations, you need to solve the variational equation and the system equation simultaneously. To do this, you work with a new augmented state vector of length $m + m^2$:
+and $`\boldsymbol{\Phi}\left(t\right): \mathbb{R} \mapsto \mathbb{R}^{m\times m}`$ is variational matrix. 
+To find out what happens to the variations, you need to solve the variational equation and the system equation simultaneously. 
+To do this, you work with a new augmented state vector $`\mathbf{z}}_\ast\left(t\right):\mathbb{R}\mapsto\mathbb{R}^{m + m^2}`$ of length $`m + m^2`$:
 ```math
-\dot{\mathbf{z}}_\ast = \begin{bmatrix}
-			\dot{\mathbf{z}}\\
-			\text{vec}\left(\dot{\boldsymbol{\Phi}}\right)
+\dot{\mathbf{z}}_\ast}\left(t\right): = \begin{bmatrix}
+			\dot{\mathbf{z}}}\left(t\right)\\
+			\text{vec}\left(\dot{\boldsymbol{\Phi}}}\left(t\right)\right)
 		\end{bmatrix} = \begin{bmatrix}
 			 \mathbf{f}\left(\mathbf{z}\right)\\
 			\text{vec}\left(\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right)\boldsymbol{\Phi}\left(t\right)\right)
@@ -76,7 +76,7 @@ To test the algorithm, an example from [here](https://home.cs.colorado.edu/~lizb
 
 ## The Lyapunov Exponents
 
-The calculation of the Lyapunov exponent was based on the QR decomposition method, the application of which can be viewed via the script [odeExplicitGeneralLE.m](Scripts/odeExplicitGeneralLE.m).
+The calculation of the Lyapunov exponent was based on the QR decomposition method, the application of which can be viewed via the script [odeExplicitSolversLyapunovExponents.m](odeExplicitSolversLyapunovExponents.m).
 
 ### Syntax
 `[t, zsol, lyap_exp] = odeExplicitSolversLyapunovExponents(odefun, tspan, tau, incond)`\
