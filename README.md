@@ -134,9 +134,9 @@ The Rössler Attractor in the [ExampleOfUse.mlx](ExampleOfUse/ExampleOfUse.pdf) 
 </p>
 
 <p align="center">
-  <img src="ExampleOfUse/images/time_series.png"/>
+  <img src="ExampleOfUse/images/time_series.svg"/>
 </p>
 
 <p align="center">
-  <img src="ExampleOfUse/images/LEs_plot.png"/>
+  <img src="ExampleOfUse/images/LEs_plot.svg"/>
 </p>
