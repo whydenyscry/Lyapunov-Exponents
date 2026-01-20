@@ -63,9 +63,9 @@ and $`\boldsymbol{\Phi}\left(t\right): \mathbb{R} \mapsto \mathbb{R}^{m\times m}
 To find out what happens to the variations, you need to solve the variational equation and the system equation simultaneously. 
 To do this, you work with a new augmented state vector $`\mathbf{z}_\ast\left(t\right):\mathbb{R}\mapsto\mathbb{R}^{m + m^2}`$ of length $`m + m^2`$:
 ```math
-\dot{\mathbf{z}}_\ast\left(t\right): = \begin{bmatrix}
-			\dot{\mathbf{z}}}\left(t\right)\\
-			\text{vec}\left(\dot{\boldsymbol{\Phi}}}\left(t\right)\right)
+\dot{\mathbf{z}}_\ast\left(t\right) = \begin{bmatrix}
+			\dot{\mathbf{z}}\left(t\right)\\
+			\text{vec}\left(\dot{\boldsymbol{\Phi}}\left(t\right)\right)
 		\end{bmatrix} = \begin{bmatrix}
 			 \mathbf{f}\left(\mathbf{z}\right)\\
 			\text{vec}\left(\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right)\boldsymbol{\Phi}\left(t\right)\right)
