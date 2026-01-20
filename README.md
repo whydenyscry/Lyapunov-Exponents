@@ -61,16 +61,17 @@ where $`\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right): \mathbb{R} \mapsto \mathbb
 			\dfrac{\partial f_m}{\partial z_1} &\cdots& \dfrac{\partial f_m}{\partial z_m} 
 		\end{bmatrix},
 ```
-and $`\boldsymbol{\Phi}: \mathbb{R} \mapsto \mathbb{R}^{m\times m}`$ is variational matrix. To find out what happens to the variations, you need to solve the variational equation and the system equation simultaneously. To do this, you work with a new augmented state vector of length $m + m^2$:
+and $`\boldsymbol{\Phi}\left(t\right): \mathbb{R} \mapsto \mathbb{R}^{m\times m}`$ is variational matrix. To find out what happens to the variations, you need to solve the variational equation and the system equation simultaneously. To do this, you work with a new augmented state vector of length $m + m^2$:
 ```math
-\mathbf{z}_\ast = \begin{bmatrix}
-			\mathbf{z}\\
-			\text{vec}\left(\boldsymbol{\Phi}\right)
-		\end{bmatrix}
+\dot{\mathbf{z}}_\ast = \begin{bmatrix}
+			\dot{\mathbf{z}}\\
+			\text{vec}\left(\dot{\boldsymbol{\Phi}}\right)
+		\end{bmatrix} = \begin{bmatrix}
+			 \mathbf{f}\left(\mathbf{z}\right)\\
+			\text{vec}\left(\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right)\boldsymbol{\Phi}\left(t\right)\right)
+		\end{bmatrix} 
 ```
-		
 The augmented IVP is solved using [General Algorithm for the Explicit Runge—Kutta Method](https://github.com/whydenyscry/General-algorithm-of-the-explicit-Runge-Kutta-method). 
-
 To test the algorithm, an example from [here](https://home.cs.colorado.edu/~lizb/chaos/variational-notes.pdf) was used. The results can be seen in the [ExampleOfUse.mlx](ExampleOfUse/ExampleOfUse.pdf) file.
 
 ## The Lyapunov Exponents
@@ -78,14 +79,14 @@ To test the algorithm, an example from [here](https://home.cs.colorado.edu/~lizb
 The calculation of the Lyapunov exponent was based on the QR decomposition method, the application of which can be viewed via the script [odeExplicitGeneralLE.m](Scripts/odeExplicitGeneralLE.m).
 
 ### Syntax
-`[t, zsol, lyap_exp] = odeExplicitSolversLyapunovExponents(odefun, tspan, tau, incond)`
+`[t, zsol, lyap_exp] = odeExplicitSolversLyapunovExponents(odefun, tspan, tau, incond)`\
 `[t, zsol, lyap_exp, dzdt_eval] = odeExplicitSolversLyapunovExponents(..., "Method", method_name, "SafeRegime", flag)`
 
 ### Input Arguments
 - `odefun`: function handle that defines the **augmented** system of ODEs to be integrated. This function must compute the derivatives for both the original system state and the flattened variational matrix;
-- `tspan`: interval of integration $[t_{start}, t_{end}]$, specified as a two-element vector;
-- `tau`: fixed time discretization step $\tau$;
-- `incond`: vector of initial conditions $\mathbf{z}_0$. This vector must consist of the initial state vector concatenated with the elements of the initial orthogonal matrix (usually the flattened identity matrix);
+- `tspan`: interval of integration, specified as a two-element vector;
+- `tau`: fixed time discretization step;
+- `incond`: vector of initial conditions. This vector must consist of the initial state vector concatenated with the elements of the initial orthogonal matrix (usually the flattened identity matrix);
 - `Method` (Name-Value Pair): string specifying the explicit Runge-Kutta method to be used. Available options:
   - `"RK3"`, `"RK4"` (default), `"RKB5"`, `"RKN5"`, `"RKB6"`, `"RKB7"`, `"RKCV8"`;
 - `SafeRegime` (Name-Value Pair): logical flag (`true` or `false`). If set to `true`, the solver performs a check for `NaN` or `Inf` values at every integration step. Default is `false`.
@@ -98,30 +99,24 @@ The calculation of the Lyapunov exponent was based on the QR decomposition metho
 
 ## The Kaplan—Yorke Dimension
 
-Let the Lyapunov exponents be sorted in descending order $\lambda _{1}\geq \lambda _{2}\geq \dots \geq \lambda _{m}$, then
-
-$$
+Let the Lyapunov exponents be sorted in descending order $`\lambda _{1}\geq \lambda _{2}\geq \dots \geq \lambda _{m}`$, then
+```math
 D_\text{KY}=k+{\frac {\sum _{i=1}^{k}\lambda_{i}}{|\lambda_{k+1}|}},
-$$
-
+```
 where for $k$
-$$
+```math
 \sum _{i=1}^{k}\lambda _{i}\geq 0, \quad \sum _{i=1}^{k + 1}\lambda _{i}<0.
-$$
-
+```
 ## Example
 
 The Rössler Attractor in the [ExampleOfUse.mlx](ExampleOfUse/ExampleOfUse.pdf) was chosen as an example:
- 
-$$ 
+```math
 \begin{cases}
 			\frac{\mathrm{d}x}{\mathrm{d}t} =-y-z,\\
 			\frac{\mathrm{d}y}{\mathrm{d}t} = x+\alpha y, \\
 			\frac{\mathrm{d}z}{\mathrm{d}t} = \beta+z\left(x-\varsigma\right),
 		\end{cases}
-$$
-
-$$ 
+		\\
 \begin{bmatrix}
 			\alpha\\
 			\beta\\
@@ -131,7 +126,7 @@ $$
 		0.2\\
 		5.7
 		\end{bmatrix}.
-$$
+```
 
 
 <p align="center">
