@@ -43,10 +43,10 @@ where $`\mathbf{z}\left(t\right):\mathbb{R} \mapsto \mathbb{R}^m, ~\mathbf{f}\le
 
 For this system the variational equation has the following form:
 ```math
-\dot{\bm{\Phi}}\left(t\right) = \mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) \bm{\Phi}\left(t\right), \quad \left.\bm{\Phi}\left(t\right)\right|_{t=t_0} = \mathbf{I}
+\dot{\boldsymbol{\Phi}}\left(t\right) = \mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) \boldsymbol{\Phi}\left(t\right), \quad \left.\boldsymbol{\Phi}\left(t\right)\right|_{t=t_0} = \mathbf{I}
 ```
 	
-where $`\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right): mathbb{R} \mapsto \mathbb{R}^{m\times m}`$ is Jacobian of the function $`\mathbf{f}\left(\mathbf{z}\right)`$ 
+where $`\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right): \mathbb{R} \mapsto \mathbb{R}^{m\times m}`$ is Jacobian of the function $`\mathbf{f}\left(\mathbf{z}\right)`$ 
 ```math
 \mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) = \frac{\text{d}\mathbf{f}}{\text{d}\mathbf{z}} = \begin{bmatrix}
 			\boldsymbol{\nabla}^\top f_1 
@@ -61,11 +61,11 @@ where $`\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right): mathbb{R} \mapsto \mathbb{
 			\dfrac{\partial f_m}{\partial z_1} &\cdots& \dfrac{\partial f_m}{\partial z_m} 
 		\end{bmatrix},
 ```
-and $`\bm{\Phi}: \mathbb{R} \mapsto \mathbb{R}^{m\times m}`$ is variational matrix. To find out what happens to the variations, you need to solve the variational equation and the system equation simultaneously. To do this, you work with a new augmented state vector of length $m + m^2$:
+and $`\boldsymbol{\Phi}: \mathbb{R} \mapsto \mathbb{R}^{m\times m}`$ is variational matrix. To find out what happens to the variations, you need to solve the variational equation and the system equation simultaneously. To do this, you work with a new augmented state vector of length $m + m^2$:
 ```math
 \mathbf{z}_\ast = \begin{bmatrix}
 			\mathbf{z}\\
-			\text{vec}\left(\bm{\Phi}\right)
+			\text{vec}\left(\boldsymbol{\Phi}\right)
 		\end{bmatrix}
 ```
 		
