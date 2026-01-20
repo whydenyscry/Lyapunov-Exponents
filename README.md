@@ -72,7 +72,6 @@ To do this, you work with a new augmented state vector $`\mathbf{z}_\ast\left(t\
 		\end{bmatrix} 
 ```
 The augmented IVP is solved using [General Algorithm for the Explicit Runge—Kutta Method](https://github.com/whydenyscry/General-algorithm-of-the-explicit-Runge-Kutta-method). 
-To test the algorithm, an example from [here](https://home.cs.colorado.edu/~lizb/chaos/variational-notes.pdf) was used. The results can be seen in the [ExampleOfUse.mlx](ExampleOfUse/ExampleOfUse.pdf) file.
 
 ## The Lyapunov Exponents
 
