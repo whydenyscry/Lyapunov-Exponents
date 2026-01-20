@@ -10,20 +10,19 @@ MATLAB script for solving augmented IVP with variational equation, calculating L
 
 ## Notes on Nonautonomous Systems
 Consider a nonautonomous IVP 
-
-$$ \dot{\mathbf{z}}\left(t\right) = \mathbf{f}\left(t, \mathbf{z}\right), \quad \left.\mathbf{z}\left(t\right)\right|_{t=t_0}=\mathbf{z}_0, $$
-
-where $\mathbf{z} \in \mathbb{R}^m, ~\mathbf{f}: \mathbb{R}\times\mathbb{R}^m \to \mathbb{R}^m$.
+```math
+\dot{\mathbf{z}}\left(t\right) = \mathbf{f}\left(t, \mathbf{z}\right), \quad \left.\mathbf{z}\left(t\right)\right|_{t=t_0}=\mathbf{z}_0, 
+```
+where $`\mathbf{z}\left(t\right):\mathbb{R} \mapsto \mathbb{R}^m, ~\mathbf{f}\left(t, \mathbf{z}\right): \mathbb{R}\times\mathbb{R}^m \to \mathbb{R}^m`$.
 
 In order to compute the Lyapunov exponents, we first need to convert the nonautonomous system to an autonomous system as follows:
-
-$$ z_{m+1} = t,$$
-
-$$\dot{\mathbf{y}}\left(t\right) = \mathbf{g}\left(\mathbf{y}\right), \quad \left.\mathbf{y}\left(t\right)\right|_{t=t_0}=\mathbf{y}_0, $$
-
-where $\mathbf{y} \in \mathbb{R}^{m+1}, ~\mathbf{g}: \mathbb{R}^{m+1} \to \mathbb{R}^{m+1}$:
-
-$$\mathbf{y} = \begin{bmatrix}
+```math
+z_{m+1} = t, \\
+\dot{\mathbf{y}}\left(t\right) = \mathbf{g}\left(\mathbf{y}\right), \quad \left.\mathbf{y}\left(t\right)\right|_{t=t_0}=\mathbf{y}_0
+```
+where $\mathbf{y}:\mathbb{R}\mapsto \mathbb{R}^{m+1}, ~\mathbf{g}\left(\mathbf{y}\right): \mathbb{R}^{m+1} \to \mathbb{R}^{m+1}$:
+```math
+\mathbf{y} = \begin{bmatrix}
 			\mathbf{z}\\
 			z_{m+1}	
 		\end{bmatrix}, \quad  \mathbf{g}\left(\mathbf{y}\right) = \begin{bmatrix}
@@ -32,58 +31,43 @@ $$\mathbf{y} = \begin{bmatrix}
 		\end{bmatrix}, \quad \mathbf{y}_0 = \begin{bmatrix}
 		\mathbf{z}_0\\
 		t_0
-		\end{bmatrix}.$$
-		
+		\end{bmatrix}.
+```
 ## The Variational Equation
 
 Consider an autonomous IVP 
-
-$$\dot{\mathbf{z}}\left(t\right) = \mathbf{f}\left(\mathbf{z}\right), \quad \left.\mathbf{z}\left(t\right)\right|\_{t=t\_0}=\mathbf{z}\_0, $$
-
-where $\mathbf{z} \in \mathbb{R}^m, ~\mathbf{f}:\mathbb{R}^m \to \mathbb{R}^m$.
+```math
+\dot{\mathbf{z}}\left(t\right) = \mathbf{f}\left(\mathbf{z}\right), \quad \left.\mathbf{z}\left(t\right)\right|_{t=t_0}=\mathbf{z}_0, 
+```
+where $`\mathbf{z}\left(t\right):\mathbb{R} \mapsto \mathbb{R}^m, ~\mathbf{f}\left(\mathbf{z}\right): \mathbb{R}^m \to \mathbb{R}^m`$.
 
 For this system the variational equation has the following form:
-
-$$\dot{\boldsymbol{\delta}}\left(t\right) = \mathbf{J}\_\mathbf{f}\left(\mathbf{z}\right) \boldsymbol{\delta}\left(t\right), \quad \left.\boldsymbol{\delta}\left(t\right)\right|\_{t=t_0} = \mathbf{I},$$
+```math
+\dot{\bm{\Phi}}\left(t\right) = \mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) \bm{\Phi}\left(t\right), \quad \left.\bm{\Phi}\left(t\right)\right|_{t=t_0} = \mathbf{I}
+```
 	
-where $\mathbf{J}_\mathbf{f} \in \mathbb{R}^{m\times m}$ is Jacobian of the function $\mathbf{f}\left(\mathbf{z}\right)$ and $\boldsymbol{\delta} \in \mathbb{R}^{m\times m}$ is variational matrix:
-	
-$$\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) = \frac{\text{d}\mathbf{f}}{\text{d}\mathbf{z}} = \begin{bmatrix}
-			\boldsymbol{\nabla}^\text{T} f_1 
+where $`\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right): mathbb{R} \mapsto \mathbb{R}^{m\times m}`$ is Jacobian of the function $`\mathbf{f}\left(\mathbf{z}\right)`$ 
+```math
+\mathbf{J}_\mathbf{f}\left(\mathbf{z}\right) = \frac{\text{d}\mathbf{f}}{\text{d}\mathbf{z}} = \begin{bmatrix}
+			\boldsymbol{\nabla}^\top f_1 
 			\\
 			\vdots
 			\\
-			\boldsymbol{\nabla}^\text{T} f_m
+			\boldsymbol{\nabla}^\top f_m
 		\end{bmatrix}=
 		\begin{bmatrix}
 			\dfrac{\partial f_1}{\partial z_1} &\cdots& \dfrac{\partial f_1}{\partial z_m}\\
 			\vdots & \ddots & \vdots \\
 			\dfrac{\partial f_m}{\partial z_1} &\cdots& \dfrac{\partial f_m}{\partial z_m} 
-		\end{bmatrix},$$	
-
-$$\boldsymbol{\delta}\left(t\right) = 
-		\begin{bmatrix}
-			\delta_{z_1 z_1}\left(t\right)&\cdots& \delta_{z_m z_1}\left(t\right)\\
-			\vdots & \ddots & \vdots \\
-			\delta_{z_1 z_m}\left(t\right) &\cdots& \delta_{z_m z_m}\left(t\right)
-		\end{bmatrix}.$$
-		
-To find out what happens to the variations, you need to solve the variational equation and the system equation simultaneously. To do this, you work with a new augmented state vector of length $m + m^2$:
-
-$$\mathbf{z}\_\ast = \begin{bmatrix}
+		\end{bmatrix},
+```
+and $`\bm{\Phi}: \mathbb{R} \mapsto \mathbb{R}^{m\times m}`$ is variational matrix. To find out what happens to the variations, you need to solve the variational equation and the system equation simultaneously. To do this, you work with a new augmented state vector of length $m + m^2$:
+```math
+\mathbf{z}_\ast = \begin{bmatrix}
 			\mathbf{z}\\
-			\boldsymbol{\delta}\_{z\_1}\\
-			\vdots\\
-			\boldsymbol{\delta}\_{z\_m}
-		\end{bmatrix},$$
-		
-where $\forall m$
-
-$$\boldsymbol{\delta}\_{z_m} = \begin{bmatrix}
-			\delta_{z_m z_1}\\
-			\vdots\\
-			\delta_{z_m z_m}
-		\end{bmatrix}.$$
+			\text{vec}\left(\bm{\Phi}\right)
+		\end{bmatrix}
+```
 		
 The augmented IVP is solved using [General Algorithm for the Explicit Runge—Kutta Method](https://github.com/whydenyscry/General-algorithm-of-the-explicit-Runge-Kutta-method). 
 
@@ -94,34 +78,35 @@ To test the algorithm, an example from [here](https://home.cs.colorado.edu/~lizb
 The calculation of the Lyapunov exponent was based on the QR decomposition method, the application of which can be viewed via the script [odeExplicitGeneralLE.m](Scripts/odeExplicitGeneralLE.m).
 
 ### Syntax
-`[t, xsol, lyap_exp] = odeExplicitGeneralLE(c_vector, A_matrix, b_vector, ode_fun, jacobian_fun, tspan, tau, incond)`
+`[t, zsol, lyap_exp] = odeExplicitSolversLyapunovExponents(odefun, tspan, tau, incond)`
+`[t, zsol, lyap_exp, dzdt_eval] = odeExplicitSolversLyapunovExponents(..., "Method", method_name, "SafeRegime", flag)`
 
 ### Input Arguments
-- `c_vector`: vector of coefficients $\mathbf{c}$ of Butcher tableau for the selected method;
-- `A_matrix`: matrix of coefficients $\mathbf{A}$ of Butcher tableau for the selected method;
-- `b_vector`: vector of coefficients $\mathbf{b}$ of Butcher tableau for the selected method;
-- `ode_fun`: function handle that defines the system of ODEs to be integrated;
-- `jacobian_fun`: function handle that computes the Jacobian matrix of the system;
-- `tspan`: interval of integration, specified as a two-element vector;
-- `tau`: time discretization step;
-- `incond`: vector of initial conditions.
+- `odefun`: function handle that defines the **augmented** system of ODEs to be integrated. This function must compute the derivatives for both the original system state and the flattened variational matrix;
+- `tspan`: interval of integration $[t_{start}, t_{end}]$, specified as a two-element vector;
+- `tau`: fixed time discretization step $\tau$;
+- `incond`: vector of initial conditions $\mathbf{z}_0$. This vector must consist of the initial state vector concatenated with the elements of the initial orthogonal matrix (usually the flattened identity matrix);
+- `Method` (Name-Value Pair): string specifying the explicit Runge-Kutta method to be used. Available options:
+  - `"RK3"`, `"RK4"` (default), `"RKB5"`, `"RKN5"`, `"RKB6"`, `"RKB7"`, `"RKCV8"`;
+- `SafeRegime` (Name-Value Pair): logical flag (`true` or `false`). If set to `true`, the solver performs a check for `NaN` or `Inf` values at every integration step. Default is `false`.
 
 ### Output Arguments
-- `t`: vector of evaluation points used to perform the integration;
-- `xsol`: matrix in which each row corresponds to a solution at the value returned in the corresponding row of `t`.
-- `lyap_exp`: matrix of Lyapunov exponents in which each row corresponds to a Lyapunov exponent at the value returned in the corresponding row of `t`.
+- `t`: column vector of evaluation points used to perform the integration;
+- `zsol`: matrix in which each row corresponds to the full solution vector (state + variations) at the value returned in the corresponding row of `t`;
+- `lyap_exp`: matrix of Lyapunov exponents in which each row contains the spectrum $`[\lambda_1, \dots, \lambda_m]`$ calculated at the value returned in the corresponding row of `t`;
+- `dzdt_eval`: (optional) matrix of the evaluated derivative vectors at each time step.
 
 ## The Kaplan—Yorke Dimension
 
-Let the Lyapunov exponents be sorted in descending order $\lambda \_{1}\geq \lambda \_{2}\geq \dots \geq \lambda \_{m}$, then
+Let the Lyapunov exponents be sorted in descending order $\lambda _{1}\geq \lambda _{2}\geq \dots \geq \lambda _{m}$, then
 
 $$
-D_\text{KY}=k+{\frac {\sum \_{i=1}^{k}\lambda\_{i}}{|\lambda\_{k+1}|}},
+D_\text{KY}=k+{\frac {\sum _{i=1}^{k}\lambda_{i}}{|\lambda_{k+1}|}},
 $$
 
 where for $k$
 $$
-\sum \_{i=1}^{k}\lambda \_{i}\geq 0, \quad \sum \_{i=1}^{k + 1}\lambda \_{i}<0.
+\sum _{i=1}^{k}\lambda _{i}\geq 0, \quad \sum _{i=1}^{k + 1}\lambda _{i}<0.
 $$
 
 ## Example
