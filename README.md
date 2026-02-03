@@ -87,9 +87,8 @@ The calculation of the Lyapunov exponent was based on the QR decomposition metho
 - `tau`: fixed time discretization step;
 - `incond`: vector of initial conditions. This vector must consist of the initial state vector concatenated with the elements of the initial orthogonal matrix (usually the flattened identity matrix);
 - `Method` (Name-Value Pair): string specifying the explicit Runge-Kutta method to be used. Available options:
-  - `"RK3"`, `"RK4"` (default), `"RKB5"`, `"RKN5"`, `"RKB6"`, `"RKB7"`, `"RKCV8"`;
-- `SafeRegime` (Name-Value Pair): logical flag (`true` or `false`). If set to `true`, the solver performs a check for `NaN` or `Inf` values at every integration step. Default is `false`.
-
+  - `"RK3"`, `"RK4"` (default), `"RKB5"`, `"RKN5"`, `"RKB6"`, `"RKB7"`, `"RKCV8"`, `"RKF10"`, `"RKF12"`, `"RKF14"`;
+  
 ### Output Arguments
 - `t`: column vector of evaluation points used to perform the integration;
 - `zsol`: matrix in which each row corresponds to the full solution vector (state + variations) at the value returned in the corresponding row of `t`;
@@ -110,10 +109,11 @@ where for $k$
 
 The Rössler Attractor in the [ExampleOfUse.mlx](ExampleOfUse/ExampleOfUse.pdf) was chosen as an example:
 ```math
+\begin{gather}
 \begin{cases}
-			\frac{\mathrm{d}x}{\mathrm{d}t} =-y-z,\\
-			\frac{\mathrm{d}y}{\mathrm{d}t} = x+\alpha y, \\
-			\frac{\mathrm{d}z}{\mathrm{d}t} = \beta+z\left(x-\varsigma\right),
+			\dot{x} =-y-z,\\
+			\dot{y} = x+\alpha y, \\
+			\dot{z} = \beta+z\left(x-\varsigma\right),
 		\end{cases}
 		\\
 \begin{bmatrix}
@@ -125,6 +125,7 @@ The Rössler Attractor in the [ExampleOfUse.mlx](ExampleOfUse/ExampleOfUse.pdf) 
 		0.2\\
 		5.7
 		\end{bmatrix}.
+\end{gather}
 ```
 
 
